@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fairy Tales — Sign Up</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="signup.css" />
+  </head>
+  <body>
+    <div class="bg-decor" aria-hidden="true"></div>
+
+    <!-- <img
+      src="images/signup-top.jpg"
+      alt="Fairy Tales cosmetics products"
+      class="banner-img top-banner"
+    /> -->
+
+    <section class="signup-layout">
+      <section id="auth">
+        <div class="auth-card">
+          <div class="auth-tabs" role="tablist">
+            <button
+              type="button"
+              class="tab-btn active"
+              id="tab-signup"
+              role="tab"
+              aria-selected="true"
+              aria-controls="signupForm"
+            >
+              Sign Up
+            </button>
+            <button
+              type="button"
+              class="tab-btn"
+              id="tab-login"
+              role="tab"
+              aria-selected="false"
+              aria-controls="loginForm"
+            >
+              Log In
+            </button>
+          </div>
+
+          <p
+            class="auth-message"
+            id="authMessage"
+            role="alert"
+            aria-live="polite"
+          ></p>
+
+          <!-- Sign Up -->
+          <form id="signupForm" class="auth-form" novalidate>
+            <label for="signupName">Full Name</label>
+            <input
+              type="text"
+              id="signupName"
+              name="name"
+              autocomplete="name"
+              placeholder="sarvesh or Hema"
+              required
+            />
+
+            <label for="signupEmail">Email</label>
+            <input
+              type="email"
+              id="signupEmail"
+              name="email"
+              autocomplete="email"
+              required
+            />
+
+            <label for="signupPassword">Password</label>
+            <input
+              type="password"
+              id="signupPassword"
+              name="password"
+              autocomplete="new-password"
+              minlength="8"
+              required
+            />
+
+            <label for="signupConfirm">Confirm Password</label>
+            <input
+              type="password"
+              id="signupConfirm"
+              name="confirmPassword"
+              autocomplete="new-password"
+              minlength="8"
+              required
+            />
+
+            <button type="submit" class="buy" id="signupSubmit">
+              <i class="fa-solid fa-user-plus" aria-hidden="true"></i>
+              Create Account
+            </button>
+          </form>
+
+          <!-- Log In -->
+          <form id="loginForm" class="auth-form hidden" novalidate>
+            <label for="loginEmail">Email</label>
+            <input
+              type="email"
+              id="loginEmail"
+              name="email"
+              autocomplete="email"
+              required
+            />
+
+            <label for="loginPassword">Password</label>
+            <input
+              type="password"
+              id="loginPassword"
+              name="password"
+              autocomplete="current-password"
+              required
+            />
+
+            <button type="submit" class="buy" id="loginSubmit">
+              <i class="fa-solid fa-right-to-bracket" aria-hidden="true"></i>
+              Log In
+            </button>
+          </form>
+
+          <div class="auth-divider"><span>or continue with</span></div>
+
+          <div class="social-icons">
+            <a href="#" class="icon" aria-label="Sign up with Google"
+              ><i class="fa-brands fa-google"></i
+            ></a>
+            <a href="#" class="icon" aria-label="Sign up with Facebook"
+              ><i class="fa-brands fa-facebook-f"></i
+            ></a>
+            <a href="#" class="icon" aria-label="Sign up with X"
+              ><span class="x-mark" aria-hidden="true">X</span></a
+            >
+            <a href="#" class="icon" aria-label="Sign up with Instagram"
+              ><i class="fa-brands fa-instagram"></i
+            ></a>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <script src="Event.js"></script>
+  </body>
+</html>

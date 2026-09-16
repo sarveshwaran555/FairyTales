@@ -1,0 +1,418 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #fffeff;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.28), rgba(255, 255, 255, 0.28)),
+    url("images/bottom.jpg");
+  background-repeat: no-repeat;
+  background-position: right center;
+  background-size: auto 160%;
+  background-attachment: fixed;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* ---- Soft tiled background, sits behind everything ----
+   Drop a subtle pattern/texture file at public/images/bg-pattern.png
+   (a small seamless tile, ~300-500px square, works best). Opacity is
+   kept low so it reads as texture, not a competing image. */
+.bg-decor {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-image:
+    linear-gradient(45deg, #ff2dd11a 25%, transparent 25%),
+    linear-gradient(-45deg, #ff2dd11a 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #ff2dd11a 75%),
+    linear-gradient(-45deg, transparent 75%, #ff2dd11a 75%);
+  background-repeat: repeat;
+  background-position:
+    0 0,
+    0 16px,
+    16px -16px,
+    -16px 0;
+  background-size: 32px 32px;
+  opacity: 0.12;
+  pointer-events: none;
+}
+
+/* ---- Top / bottom banner strips ----
+   Drop real files at public/images/signup-top.jpg and
+   public/images/signup-bottom.jpg (wide landscape shots work best,
+   e.g. 1600x400). Until those exist the browser shows its broken-image
+   icon here — swap in real photos to complete the look. */
+.banner-img {
+  display: block;
+  width: 100%;
+  height: clamp(120px, 22vw, 240px);
+  object-fit: cover;
+  object-position: center right;
+}
+
+/* .top-banner {
+  border-bottom: 3px solid #ff2dd1;
+  object-position: center bottom;
+} */
+
+.bottom-banner {
+  display: none;
+}
+
+/* ---- Header / logo (matches cosmetics.html) ---- */
+.logo {
+  background-color: #dc90d858;
+  color: #ff2dd1;
+  font-family: cursive;
+  font-size: 20px;
+  width: auto;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 0;
+  animation: glow ease-in-out 8s infinite;
+}
+@keyframes glow {
+  0% {
+    text-shadow:
+      0 0 0px #ff2dd1,
+      0 0 0px #ff2dd1,
+      0 0 0.1px #ff2dd1,
+      0 0 0.2px #ff2dd1,
+      0 0 0.3px #ff2dd1,
+      0 0 0.4px #ff2dd1,
+      0 0 0.5px #ff2dd1;
+  }
+  50% {
+    text-shadow:
+      0 0 0px #ff2dd1,
+      0 0 1px #ff2dd1,
+      0 0 2px #ff2dd1,
+      0 0 3px #ff2dd1,
+      0 0 4px #ff2dd1,
+      0 0 0.2px #ff2dd1,
+      0 0 0.3px #ff2dd1;
+  }
+  100% {
+    text-shadow:
+      0 0 1px #ff2dd1,
+      0 0 1px #ff2dd1,
+      0 0 2px #ff2dd1,
+      0 0 3px #ff2dd1,
+      0 0 0.4px #ff2dd1,
+      0 0 0.5px #ff2dd1,
+      0 0 0.6px #ff2dd1;
+  }
+  to {
+    text-shadow:
+      0 0 0px #ff2dd1,
+      0 0 0px #ff2dd1,
+      0 0 0.1px #ff2dd1,
+      0 0 0.2px #ff2dd1,
+      0 0 0.3px #ff2dd1,
+      0 0 0.4px #ff2dd1,
+      0 0 0.5px #ff2dd1;
+  }
+}
+
+.navbar {
+  background-color: #bec2eddf;
+  width: 100%;
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;
+}
+.navlinks {
+  display: flex;
+  list-style: none;
+  gap: 8px;
+  margin: 0;
+}
+.navlinks li {
+  list-style: none;
+}
+.navlinks a {
+  display: block;
+  text-decoration: none;
+  color: rgb(10, 244, 244);
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-size: 18px;
+  padding: 10px 18px;
+  border-radius: 5px;
+  transition:
+    color 160ms ease,
+    background-color 160ms ease,
+    transform 160ms ease,
+    box-shadow 160ms ease;
+}
+.navlinks a:hover {
+  transform: scale(1.05);
+  font-weight: 700;
+  background-color: #50797a;
+  color: rgb(190, 229, 14);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+}
+
+/* ---- Product image beside auth form ---- */
+.signup-layout {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 40px clamp(20px, 8vw, 120px);
+  padding-right: clamp(24px, 4vw, 56px);
+}
+
+/* ---- Auth section ---- */
+#auth {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0;
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 440px;
+  background: rgba(255, 255, 255, 0.42);
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  border-radius: 14px;
+  padding: 28px 28px 32px;
+  box-shadow:
+    0 18px 42px rgba(91, 44, 111, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(0.6px) saturate(125%);
+  -webkit-backdrop-filter: blur(6px) saturate(125%);
+}
+
+@media (max-width: 760px) {
+  .signup-layout {
+    justify-content: center;
+    padding: 28px 20px 40px;
+  }
+
+  #auth {
+    width: 100%;
+  }
+}
+
+.auth-tabs {
+  display: flex;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #f0d3ee;
+  margin-bottom: 18px;
+}
+
+.tab-btn {
+  flex: 1;
+  padding: 12px 0;
+  border: none;
+  background-color: #f6e9f7;
+  color: #5b2c6f;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background-color 160ms ease,
+    color 160ms ease;
+}
+
+.tab-btn.active {
+  background-color: #ff2dd1;
+  color: #fff;
+}
+
+.auth-message {
+  min-height: 20px;
+  font-size: 14px;
+  text-align: center;
+  margin-bottom: 8px;
+  color: #c0392b;
+}
+
+.auth-message.success {
+  color: #2f9e5b;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.auth-form.hidden {
+  display: none;
+}
+
+.auth-form label {
+  font-size: 13px;
+  color: #2d3e50;
+  margin-top: 10px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.auth-form input {
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 15px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  outline: none;
+  transition:
+    border-color 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.auth-form input:focus {
+  border-color: #ff2dd1;
+  box-shadow: 0 0 0 3px #ff2dd126;
+}
+
+.auth-form input:invalid:not(:placeholder-shown) {
+  border-color: #e57373;
+}
+
+.buy {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 18px;
+  padding: 12px 16px;
+  background-color: #ff2dd1;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 100%;
+  min-height: 44px;
+  font-size: 16px;
+  transition:
+    transform 160ms ease,
+    background-color 160ms ease,
+    opacity 160ms ease;
+}
+
+.buy:hover {
+  transform: translateY(-2px);
+  background-color: #d81cae;
+}
+
+.buy:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+  transform: none;
+}
+
+.auth-divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #999;
+  font-size: 13px;
+  margin: 22px 0 14px;
+}
+.auth-divider::before,
+.auth-divider::after {
+  content: "";
+  flex: 1;
+  border-bottom: 1px solid #eee;
+}
+.auth-divider span {
+  padding: 0 10px;
+}
+
+/* ---- Social icons (matches cosmetics.html) ---- */
+.social-icons,
+.footer-icons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 8px 0;
+}
+.social-icons a,
+.footer-icons a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  font-size: 22px;
+  color: rgb(240, 243, 237);
+  border-radius: 8px;
+  border: 2px solid #d68be8;
+  background-color: #ff2dd1;
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  transition:
+    transform 160ms ease,
+    background-color 160ms ease;
+}
+.social-icons a:hover,
+.footer-icons a:hover {
+  transform: translateY(-2px);
+  background-color: #d81cae;
+}
+.x-mark {
+  display: block;
+  font-family: Arial, sans-serif;
+  font-size: 21px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+/* ---- Footer (matches cosmetics.html) ---- */
+.footer {
+  background-color: #f6e9f7;
+  width: 100%;
+  min-height: 220px;
+  padding: 40px 20px 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  text-align: center;
+}
+.footer h2 {
+  color: #ff2dd1;
+  margin-bottom: 6px;
+}
+.footer ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 18px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.footer ul li {
+  color: #5b2c6f;
+}
+.link a {
+  color: inherit;
+  display: inline-block;
+  padding: 4px 6px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: color 160ms ease;
+}
+.link a:hover,
+.link a:focus-visible {
+  text-decoration: underline;
+  color: black;
+}

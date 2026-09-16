@@ -1,0 +1,528 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fairy Tales</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        background-color: #fffefffb;
+        min-height: 100vh;
+      }
+      .logo {
+        background-color: #dc90d858;
+        color: #ff2dd1;
+        font-family: cursive;
+        font-size: 20px;
+        width: auto;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px 0;
+        animation: glow ease-in-out 8s infinite;
+      }
+      @keyframes glow {
+        0% {
+          text-shadow:
+            0 0 0px #ff2dd1,
+            0 0 0px #ff2dd1,
+            0 0 0.1px #ff2dd1,
+            0 0 0.2px #ff2dd1,
+            0 0 0.3px #ff2dd1,
+            0 0 0.4px #ff2dd1,
+            0 0 0.5px #ff2dd1;
+        }
+        50% {
+          text-shadow:
+            0 0 0px #ff2dd1,
+            0 0 1px #ff2dd1,
+            0 0 2px #ff2dd1,
+            0 0 3px #ff2dd1,
+            0 0 4px #ff2dd1,
+            0 0 0.2px #ff2dd1,
+            0 0 0.3px #ff2dd1;
+        }
+        100% {
+          text-shadow:
+            0 0 1px #ff2dd1,
+            0 0 1px #ff2dd1,
+            0 0 2px #ff2dd1,
+            0 0 3px #ff2dd1,
+            0 0 0.4px #ff2dd1,
+            0 0 0.5px #ff2dd1,
+            0 0 0.6px #ff2dd1;
+        }
+        to {
+          text-shadow:
+            0 0 0px #ff2dd1,
+            0 0 0px #ff2dd1,
+            0 0 0.1px #ff2dd1,
+            0 0 0.2px #ff2dd1,
+            0 0 0.3px #ff2dd1,
+            0 0 0.4px #ff2dd1,
+            0 0 0.5px #ff2dd1;
+        }
+      }
+
+      .navbar {
+        background-color: #bec2eddf;
+        width: 100%;
+        min-height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 20px;
+      }
+      .navlinks {
+        display: flex;
+        list-style: none;
+        gap: 8px;
+        margin: 0;
+      }
+      .navlinks li {
+        list-style: none;
+      }
+      .navlinks a {
+        display: block;
+        text-decoration: none;
+        color: rgb(10, 244, 244);
+        font-family:
+          "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+        font-size: 18px;
+        padding: 10px 18px;
+        border-radius: 5px;
+        transition:
+          color 160ms ease,
+          background-color 160ms ease,
+          transform 160ms ease,
+          box-shadow 160ms ease;
+      }
+
+      .navlinks a:hover {
+        transform: scale(1.05);
+        font-weight: 700;
+        background-color: #50797a;
+        color: rgb(190, 229, 14);
+        box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+        padding: 10px 18px;
+      }
+
+      .social-icons,
+      .footer-icons {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin: 8px 0;
+      }
+      .social-icons a,
+      .footer-icons a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 42px;
+        height: 42px;
+        font-size: 22px;
+        color: rgb(240, 243, 237);
+        border-radius: 8px;
+        border: 2px solid #d68be8;
+        background-color: #ff2dd1;
+        padding: 0;
+        margin: 0;
+        text-decoration: none;
+        transition:
+          transform 160ms ease,
+          background-color 160ms ease;
+      }
+      .social-icons a:hover,
+      .footer-icons a:hover {
+        transform: translateY(-2px);
+        background-color: #d81cae;
+      }
+      .icon i {
+        display: block;
+        line-height: 1;
+      }
+      .x-mark {
+        display: block;
+        font-family: Arial, sans-serif;
+        font-size: 21px;
+        font-weight: 700;
+        line-height: 1;
+      }
+      .footer {
+        background-color: #f6e9f7;
+        width: 100%;
+        min-height: 260px;
+        padding: 40px 20px 50px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+        text-align: center;
+        margin-top: 30px;
+      }
+      .footer h2 {
+        color: #ff2dd1;
+        margin-bottom: 6px;
+      }
+      .footer ul {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 18px;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      .footer ul li {
+        color: #5b2c6f;
+      }
+      ul {
+        margin-top: 10px;
+      }
+
+      #home h4 {
+        text-align: center;
+        font-family: "Courier New", Courier, monospace;
+        font-size: 30px;
+        color: #50b2c8;
+        padding: 20px 0;
+      }
+      .homeimg {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .blog-content {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 20px;
+        background-color: #eaf6ff;
+        padding: 20px;
+        border-radius: 12px;
+        margin: 20px auto;
+        max-width: 1100px;
+      }
+      .blog-image {
+        flex: 0 0 320px;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+      }
+      .blogimg {
+        width: 100%;
+        max-width: 320px;
+        height: auto;
+        border-radius: 10px;
+        object-fit: cover;
+      }
+      .blog-text {
+        flex: 1;
+        min-width: 0;
+      }
+      .blog-pre {
+        margin: 0;
+        padding: 0;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 18px;
+        line-height: 1.7;
+        white-space: pre-wrap;
+        text-align: left;
+      }
+      .container {
+        max-width: 1200px;
+        width: 100%;
+        margin: 0 auto;
+        padding: 24px 20px 40px;
+      }
+      .container .row {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 24px;
+      }
+
+      .container .col {
+        display: flex;
+        flex-direction: column;
+        background-color: #fff;
+        border: 1px solid #eee;
+        border-radius: 12px;
+        padding: 16px;
+        height: 100%;
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+      }
+      .container .col img {
+        width: 100%;
+        height: 260px;
+        object-fit: cover;
+        border-radius: 8px;
+        margin-bottom: 12px;
+      }
+
+      .ingredients,
+      .container .col ul {
+        list-style-type: disc;
+        padding-left: 20px;
+        margin: 0 0 12px;
+      }
+
+      .container .col h3 {
+        font-size: 18px;
+        margin-bottom: 10px;
+        color: #2d3e50;
+      }
+
+      .price {
+        font-weight: bold;
+        font-size: 18px;
+        margin-top: auto;
+        padding-top: 10px;
+        color: #2f697d;
+      }
+
+      .buy {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        margin-top: 10px;
+        padding: 10px 16px;
+        background-color: #ff2dd1;
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        width: 100%;
+        min-height: 42px;
+        font-size: 16px;
+        transition:
+          transform 160ms ease,
+          background-color 160ms ease;
+      }
+
+      .buy:hover {
+        transform: translateY(-2px);
+        background-color: #d81cae;
+      }
+
+      pre {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 20px;
+        font-weight: lighter;
+        padding: 15px 0 8px;
+        line-height: 2;
+        text-align: center;
+      }
+      .promo {
+        background-color: #50b2c8;
+        color: #333;
+        border: solid 5px #333;
+        font-weight: bolder;
+        font-size: 15px;
+        width: 100%;
+        height: auto;
+      }
+      .promo p {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 0 8px;
+        margin-left: 70px;
+        letter-spacing: 1px;
+        word-spacing: 2px;
+      }
+      .link a {
+        color: inherit;
+        display: inline-block;
+        padding: 4px 6px;
+        cursor: pointer;
+        text-decoration: none;
+        transition: color 160ms ease;
+      }
+      .link a:hover,
+      .link a:focus-visible {
+        text-decoration: underline;
+        color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <h2>Fairy Tales</h2>
+      </div>
+      <nav class="navbar">
+        <ul class="navlinks">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#blog">Blog</a></li>
+          <li><a href="#products">Products</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+
+        <div class="social-icons">
+          <a href="#" class="icon" aria-label="Sign up with Google"
+            ><i class="fa-brands fa-google"></i
+          ></a>
+          <a href="#" class="icon" aria-label="Sign up with Facebook"
+            ><i class="fa-brands fa-facebook-f"></i
+          ></a>
+          <a href="#" class="icon" aria-label="Sign up with X"
+            ><span class="x-mark" aria-hidden="true">X</span></a
+          >
+          <a href="#" class="icon" aria-label="Sign up with Instagram"
+            ><i class="fa-brands fa-instagram"></i
+          ></a>
+        </div>
+      </nav>
+    </header>
+    <section id="home">
+      <h4><u>Making Celestial Beauties</u></h4>
+      <pre>
+Fairy Tales is one-stop solution for all your beauty needs. We offer a wide range of products, from skincare to makeup, to help you look and feel your best.
+     Our team of experts is dedicated to providing you with the best products and services, so you can achieve the perfect look for any occasion.
+</pre
+      >
+      <div class="homeimg">
+        <img src="images/cos1.png" width="400" height="400" alt="Fairy Tales" />
+      </div>
+    </section>
+    <section id="blog">
+      <div class="blog-content">
+        <div class="blog-image">
+          <img
+            src="images/side2.jpg"
+            alt="Makeup and skincare tips"
+            class="blogimg"
+          />
+        </div>
+        <div class="blog-text">
+          <pre class="blog-pre">
+Makeup can boost confidence, but long-term use may cause irritation, breakouts, or dryness. Choosing gentle products and keeping tools clean helps protect your skin. A simple routine, proper removal, and regular check-ins with your skin can make a big difference.</pre
+          >
+        </div>
+      </div>
+      <div class="promo">
+        <p>
+          Use Fairy Tales Products to Get rid out of other Harmful Products.
+        </p>
+      </div>
+    </section>
+    <section id="products">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <h3>Fairness cream for acne</h3>
+            <img
+              src="images/cream1.jpg"
+              alt="Fairness cream for acne"
+              width="400"
+              height="400"
+            />
+            <ul>
+              <li>Aqua</li>
+              <li>Diethylphylamine</li>
+              <li>Salicylic Acid</li>
+              <li>Tea Tree Oil</li>
+              <li>Skin Type: Oily</li>
+            </ul>
+            <p class="price">₹199</p>
+            <button class="buy" type="button">
+              <i class="fa-solid fa-cart-shopping" aria-hidden="true"></i> Add
+              To Cart
+            </button>
+          </div>
+
+          <div class="col">
+            <h3>Neem and Aloe Vera</h3>
+            <img
+              src="images/cream2.jpg"
+              alt="Fairness cream for Neem and Aloe Vera"
+              width="400"
+              height="400"
+            />
+            <ul class="ingredients">
+              <li>Aqua</li>
+              <li>Diethylphylamine</li>
+              <li>Neem Extract</li>
+              <li>Aloe Vera Gel</li>
+              <li>Skin Type: All</li>
+            </ul>
+            <p class="price">₹249</p>
+            <button class="buy" type="button">
+              <i class="fa-solid fa-cart-shopping" aria-hidden="true"></i> Add
+              To Cart
+            </button>
+          </div>
+
+          <div class="col">
+            <h3>Fairness cream for Brightening</h3>
+            <img
+              src="images/cream3.jpg"
+              alt="Fairness cream for Brightening"
+              width="400"
+              height="400"
+            />
+            <ul class="ingredients">
+              <li>Aqua</li>
+              <li>Diethylphylamine</li>
+              <li>Vitamin C</li>
+              <li>Licorice Extract</li>
+              <li>Skin Type: Dull</li>
+            </ul>
+            <p class="price">₹299</p>
+            <button class="buy" type="button">
+              <i class="fa-solid fa-cart-shopping" aria-hidden="true"></i> Add
+              To Cart
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="contact">
+      <footer class="footer">
+        <h2><u>Fairy Tales</u></h2>
+        <ul class="link">
+          <li><a href="#privacy">Privacy</a></li>
+          <li><a href="#contact">Contact Us</a></li>
+          <li><a href="#terms">Terms and Policy</a></li>
+        </ul>
+        <h3>Follow Us On</h3>
+        <div class="footer-icons">
+          <a href="#" class="icon" aria-label="Sign up with Google"
+            ><i class="fa-brands fa-google"></i
+          ></a>
+          <a href="#" class="icon" aria-label="Sign up with Facebook"
+            ><i class="fa-brands fa-facebook-f"></i
+          ></a>
+          <a href="#" class="icon" aria-label="Sign up with X"
+            ><span class="x-mark" aria-hidden="true">X</span></a
+          >
+          <a href="#" class="icon" aria-label="Sign up with Instagram"
+            ><i class="fa-brands fa-instagram"></i
+          ></a>
+        </div>
+      </footer>
+    </section>
+    <script>
+      document.querySelectorAll(".buy").forEach((button) => {
+        button.addEventListener("click", () => {
+          window.location.href = "signup.html";
+        });
+      });
+    </script>
+  </body>
+</html>
