@@ -23,12 +23,12 @@ fairy-tales-cosmetics/
     ├── signup.css
     ├── Event.js               # panel toggle + calls the API + redirect
     ├── cosmetics.html         # product page, shown after login
-    └── images/                # put cos1.png, side2.jpg, cream1-3.jpg here
+   └── assets/
+      └── images/            # product and page imagery
 ```
 
-Because `cosmetics.html` still points at `/images/...`, drop your image
-files into `public/images/` so the same paths keep working once everything
-is served from this one project.
+The frontend assets live in `public/assets/images/`, keeping static media
+separate from the HTML, CSS, and JavaScript files served by Express.
 
 ## How sign in / sign up works
 

@@ -8,7 +8,7 @@ body {
   background-color: #fffeff;
   background-image:
     linear-gradient(rgba(255, 255, 255, 0.28), rgba(255, 255, 255, 0.28)),
-    url("images/bottom.jpg");
+    url("assets/images/bottom.jpg");
   background-repeat: no-repeat;
   background-position: right center;
   background-size: auto 160%;
@@ -20,7 +20,7 @@ body {
 }
 
 /* ---- Soft tiled background, sits behind everything ----
-   Drop a subtle pattern/texture file at public/images/bg-pattern.png
+  Drop a subtle pattern/texture file at public/assets/images/bg-pattern.png
    (a small seamless tile, ~300-500px square, works best). Opacity is
    kept low so it reads as texture, not a competing image. */
 .bg-decor {
@@ -44,8 +44,8 @@ body {
 }
 
 /* ---- Top / bottom banner strips ----
-   Drop real files at public/images/signup-top.jpg and
-   public/images/signup-bottom.jpg (wide landscape shots work best,
+  Drop real files at public/assets/images/signup-top.jpg and
+  public/assets/images/signup-bottom.jpg (wide landscape shots work best,
    e.g. 1600x400). Until those exist the browser shows its broken-image
    icon here — swap in real photos to complete the look. */
 .banner-img {
