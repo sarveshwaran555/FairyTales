@@ -1,0 +1,20 @@
+# Render blueprint — lets you deploy this repo as a Web Service in one click.
+# Docs: https://render.com/docs/blueprint-spec
+services:
+  - type: web
+    name: fairy-tales-cosmetics
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/health
+    autoDeploy: true
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: MONGODB_URI
+        sync: false # set in the Render dashboard (Atlas connection string)
+      - key: JWT_SECRET
+        generateValue: true # Render generates a long random secret for you
+      - key: JWT_EXPIRES_IN
+        value: 7d

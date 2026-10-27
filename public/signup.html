@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fairy Tales - Sign In / Sign Up</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link rel="stylesheet" href="signup.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+<div class="container" id="container">
+    <!-- Sign In Form -->
+    <div class="form-signin">
+        <form id="signinForm" novalidate>
+            <h1>Sign In</h1>
+            <div class="social-icons">
+                <a href="#" class="icon" aria-label="Sign in with Google"><i class="fa-brands fa-google"></i></a>
+                <a href="#" class="icon" aria-label="Sign in with Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#" class="icon" aria-label="Sign in with X"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="#" class="icon" aria-label="Sign in with Instagram"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+
+            <span>Or Use your Email Account</span><br/><br/>
+
+            <p class="form-message" id="signinMessage" role="alert"></p>
+
+            <input type="email" id="signinEmail" name="email" placeholder="Email" autocomplete="email" required><br/><br/>
+            <input type="password" id="signinPassword" name="password" placeholder="Password" autocomplete="current-password" required><br/><br/>
+
+            <a href="#forgot">Forgot Password</a><br/><br/>
+            <button type="submit" id="signinSubmit">Sign In</button>
+        </form>
+    </div>
+
+    <!-- Sign Up Form -->
+    <div class="form-signup">
+        <form id="signupForm" novalidate>
+            <h1>Create Account</h1>
+            <div class="social-icons">
+                <a href="#" class="icon" aria-label="Sign up with Google"><i class="fa-brands fa-google"></i></a>
+                <a href="#" class="icon" aria-label="Sign up with Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#" class="icon" aria-label="Sign up with X"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="#" class="icon" aria-label="Sign up with Instagram"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+
+            <span>Or Use your Email Account</span><br/><br/>
+
+            <p class="form-message" id="signupMessage" role="alert"></p>
+
+            <input type="text" id="signupName" name="name" placeholder="Name" autocomplete="name" required><br/><br/>
+            <input type="email" id="signupEmail" name="email" placeholder="Email" autocomplete="email" required><br/><br/>
+            <input type="password" id="signupPassword" name="password" placeholder="Password" autocomplete="new-password" minlength="8" required><br/><br/>
+            <input type="password" id="signupConfirmPassword" name="confirmPassword" placeholder="Confirm Password" autocomplete="new-password" minlength="8" required><br/><br/>
+            <button type="submit" id="signupSubmit">Sign Up</button>
+        </form>
+    </div>
+
+    <!-- Toggle Container -->
+    <div class="toggle-container">
+        <div class="toggle">
+            <div class="toggle-panel toggle-left">
+                <h1>Welcome Back!</h1>
+                <p>Sign in to keep exploring Fairy Tales</p>
+                <button class="hidden" id="login">Sign In</button>
+            </div>
+
+            <div class="toggle-panel toggle-right">
+                <h1>Register</h1>
+                <p>Create an account to get started</p>
+                <button class="hidden" id="register">Sign Up</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="Event.js"></script>
+</body>
+</html>
