@@ -1,82 +1,162 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fairy Tales - Sign In / Sign Up</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#4c5a3e" />
+    <meta
+      name="description"
+      content="Sign in or create your Fairy Tales Cosmetics account."
+    />
+    <title>Welcome | Fairy Tales Cosmetics</title>
+    <link rel="stylesheet" href="signup.css?v=8" />
+  </head>
+  <body>
+    <main class="page-shell">
+      <a class="wordmark" href="/" aria-label="Fairy Tales Cosmetics home">
+        <span class="wordmark-mark" aria-hidden="true">F</span>
+        <span>Fairy Tales <small>COSMETICS</small></span>
+      </a>
 
-    <link rel="stylesheet" href="signup.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head>
-<body>
-
-<div class="container" id="container">
-    <!-- Sign In Form -->
-    <div class="form-signin">
-        <form id="signinForm" novalidate>
-            <h1>Sign In</h1>
-            <div class="social-icons">
-                <a href="#" class="icon" aria-label="Sign in with Google"><i class="fa-brands fa-google"></i></a>
-                <a href="#" class="icon" aria-label="Sign in with Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-                <a href="#" class="icon" aria-label="Sign in with X"><i class="fa-brands fa-x-twitter"></i></a>
-                <a href="#" class="icon" aria-label="Sign in with Instagram"><i class="fa-brands fa-instagram"></i></a>
-            </div>
-
-            <span>Or Use your Email Account</span><br/><br/>
+      <section
+        class="container active"
+        id="container"
+        aria-label="Account access"
+      >
+        <div class="form-panel form-signin">
+          <form id="signinForm" novalidate>
+            <p class="eyebrow">YOUR LITTLE MOMENT OF MAGIC</p>
+            <h1>Welcome back</h1>
+            <p class="form-intro">Sign in to continue your beauty ritual.</p>
 
             <p class="form-message" id="signinMessage" role="alert"></p>
 
-            <input type="email" id="signinEmail" name="email" placeholder="Email" autocomplete="email" required><br/><br/>
-            <input type="password" id="signinPassword" name="password" placeholder="Password" autocomplete="current-password" required><br/><br/>
+            <label for="signinEmail">Email address</label>
+            <input
+              type="email"
+              id="signinEmail"
+              name="email"
+              placeholder="Enter the email"
+              autocomplete="email"
+              required
+            />
 
-            <a href="#forgot">Forgot Password</a><br/><br/>
-            <button type="submit" id="signinSubmit">Sign In</button>
-        </form>
-    </div>
+            <label for="signinPassword">Password</label>
+            <input
+              type="password"
+              id="signinPassword"
+              name="password"
+              placeholder="Enter your password"
+              autocomplete="current-password"
+              required
+            />
 
-    <!-- Sign Up Form -->
-    <div class="form-signup">
-        <form id="signupForm" novalidate>
-            <h1>Create Account</h1>
-            <div class="social-icons">
-                <a href="#" class="icon" aria-label="Sign up with Google"><i class="fa-brands fa-google"></i></a>
-                <a href="#" class="icon" aria-label="Sign up with Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-                <a href="#" class="icon" aria-label="Sign up with X"><i class="fa-brands fa-x-twitter"></i></a>
-                <a href="#" class="icon" aria-label="Sign up with Instagram"><i class="fa-brands fa-instagram"></i></a>
-            </div>
+            <button class="submit-button" type="submit" id="signinSubmit">
+              Sign in
+            </button>
+            <p class="mobile-switch">
+              New to Fairy Tales?
+              <button type="button" class="text-button" data-auth-view="signup">
+                Create an account
+              </button>
+            </p>
+          </form>
+        </div>
 
-            <span>Or Use your Email Account</span><br/><br/>
+        <div class="form-panel form-signup">
+          <form id="signupForm" novalidate>
+            <p class="eyebrow">A LITTLE SELF-CARE, JUST FOR YOU</p>
+            <h1>Create your account</h1>
+            <p class="form-intro">Join us for your next feel-good ritual.</p>
 
             <p class="form-message" id="signupMessage" role="alert"></p>
 
-            <input type="text" id="signupName" name="name" placeholder="Name" autocomplete="name" required><br/><br/>
-            <input type="email" id="signupEmail" name="email" placeholder="Email" autocomplete="email" required><br/><br/>
-            <input type="password" id="signupPassword" name="password" placeholder="Password" autocomplete="new-password" minlength="8" required><br/><br/>
-            <input type="password" id="signupConfirmPassword" name="confirmPassword" placeholder="Confirm Password" autocomplete="new-password" minlength="8" required><br/><br/>
-            <button type="submit" id="signupSubmit">Sign Up</button>
-        </form>
-    </div>
+            <label for="signupName">Your name</label>
+            <input
+              type="text"
+              id="signupName"
+              name="name"
+              placeholder="Your name"
+              autocomplete="name"
+              required
+            />
 
-    <!-- Toggle Container -->
-    <div class="toggle-container">
-        <div class="toggle">
-            <div class="toggle-panel toggle-left">
-                <h1>Welcome Back!</h1>
-                <p>Sign in to keep exploring Fairy Tales</p>
-                <button class="hidden" id="login">Sign In</button>
-            </div>
+            <label for="signupEmail">Email address</label>
+            <input
+              type="email"
+              id="signupEmail"
+              name="email"
+              placeholder="enter the email"
+              autocomplete="email"
+              required
+            />
 
-            <div class="toggle-panel toggle-right">
-                <h1>Register</h1>
-                <p>Create an account to get started</p>
-                <button class="hidden" id="register">Sign Up</button>
-            </div>
+            <label for="signupPassword">Password</label>
+            <input
+              type="password"
+              id="signupPassword"
+              name="password"
+              placeholder="At least 8 characters"
+              autocomplete="new-password"
+              minlength="8"
+              required
+            />
+
+            <label for="signupConfirmPassword">Confirm password</label>
+            <input
+              type="password"
+              id="signupConfirmPassword"
+              name="confirmPassword"
+              placeholder="Confirm password"
+              autocomplete="new-password"
+              minlength="8"
+              required
+            />
+
+            <button class="submit-button" type="submit" id="signupSubmit">
+              Create account
+            </button>
+            <p class="mobile-switch">
+              Already have an account?
+              <button type="button" class="text-button" data-auth-view="signin">
+                Sign in
+              </button>
+            </p>
+          </form>
         </div>
-    </div>
-</div>
 
-<script src="Event.js"></script>
-</body>
+        <aside class="toggle-container" aria-label="Switch account form">
+          <div class="toggle">
+            <div class="toggle-panel toggle-left">
+              <p class="eyebrow">A SOFTER KIND OF BEAUTY</p>
+              <h2>Make room<br />for a little magic.</h2>
+              <p>Discover thoughtful care for the skin you’re in.</p>
+              <button
+                class="switch-button"
+                type="button"
+                data-auth-view="signin"
+              >
+                Sign in
+              </button>
+            </div>
+            <div class="toggle-panel toggle-right">
+              <p class="eyebrow">WELCOME TO FAIRY TALES</p>
+              <h2>Your next feel-good<br />ritual starts here.</h2>
+              <p>Create an account and make yourself at home.</p>
+              <button
+                class="switch-button"
+                type="button"
+                data-auth-view="signup"
+              >
+                Create account
+              </button>
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <p class="page-note">A little care goes a long way.</p>
+    </main>
+    <script src="Event.js"></script>
+  </body>
 </html>

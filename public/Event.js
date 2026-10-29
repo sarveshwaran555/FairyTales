@@ -5,19 +5,23 @@
 
 document.addEventListener("DOMContentLoaded", () => {
   const container = document.getElementById("container");
-  const registerBtn = document.getElementById("register");
-  const loginBtn = document.getElementById("login");
 
   // ---- Panel toggle ----
-  if (registerBtn && container) {
-    registerBtn.addEventListener("click", () =>
-      container.classList.add("active"),
-    );
-  }
-  if (loginBtn && container) {
-    loginBtn.addEventListener("click", () =>
-      container.classList.remove("active"),
-    );
+  if (container) {
+    document
+      .querySelectorAll('[data-auth-view="signup"]')
+      .forEach((button) =>
+        button.addEventListener("click", () =>
+          container.classList.add("active"),
+        ),
+      );
+    document
+      .querySelectorAll('[data-auth-view="signin"]')
+      .forEach((button) =>
+        button.addEventListener("click", () =>
+          container.classList.remove("active"),
+        ),
+      );
   }
 
   // ---- Shared helpers ----
@@ -35,12 +39,22 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   async function postJSON(url, data) {
-    const response = await fetch(url, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      credentials: "include", // send/receive the httpOnly auth cookie
-      body: JSON.stringify(data),
-    });
+    let response;
+    try {
+      response = await fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        credentials: "include", // send/receive the httpOnly auth cookie
+        body: JSON.stringify(data),
+      });
+    } catch (error) {
+      if (error instanceof TypeError) {
+        throw new Error(
+          "Cannot reach the local server. Run npm start and open http://localhost:3000.",
+        );
+      }
+      throw error;
+    }
 
     let body = {};
     try {

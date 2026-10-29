@@ -18,3 +18,5 @@ services:
         generateValue: true # Render generates a long random secret for you
       - key: JWT_EXPIRES_IN
         value: 7d
+      - name: branch-deploy
+        uses: github/branch-deploy@v9.9.1

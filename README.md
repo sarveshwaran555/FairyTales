@@ -74,8 +74,10 @@ is served from this one project.
    npm run dev
    ```
 
-5. Open **http://localhost:3000** — that loads `signup.html`. Create an
-   account or sign in; you'll land on `cosmetics.html` on success.
+5. Open **http://localhost:3000** — that loads `signup.html`. Do not open the
+   HTML file directly from disk; the forms need the local server for their API
+   requests. Create an account or sign in; you'll land on `cosmetics.html` on
+   success.
 
 ## API reference
 

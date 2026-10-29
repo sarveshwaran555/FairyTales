@@ -2,7 +2,6 @@ require("dotenv").config();
 const path = require("path");
 const express = require("express");
 const mongoose = require("mongoose");
-const cors = require("cors");
 const cookieParser = require("cookie-parser");
 
 const authRoutes = require("./routes/auth");
@@ -33,7 +32,18 @@ app.disable("x-powered-by");
 // HTTPS is required in production (secure cookies, HSTS).
 if (isProduction) {
   app.use((req, res, next) => {
-    if (req.secure || req.get("x-forwarded-proto") === "https") return next();
+    const hostname = req.hostname.replace(/^\[|\]$/g, "");
+    const isLoopback =
+      hostname === "localhost" ||
+      hostname === "127.0.0.1" ||
+      hostname === "::1";
+    if (
+      req.secure ||
+      req.get("x-forwarded-proto") === "https" ||
+      isLoopback
+    ) {
+      return next();
+    }
     return res.redirect(301, `https://${req.get("host")}${req.originalUrl}`);
   });
 }
@@ -84,33 +94,9 @@ app.use(express.json({ limit: "10kb" }));
 app.use(express.urlencoded({ extended: false, limit: "10kb" }));
 app.use(cookieParser());
 
-// Same-origin app: CORS is not needed. Reflecting the request origin with
-// credentials (origin: true) would let any site call this API with the
-// user's cookie, so it is limited to the app's own origin (plus any extras
-// listed in ALLOWED_ORIGINS) instead.
-const allowedOrigins = new Set(
-  (process.env.ALLOWED_ORIGINS || "")
-    .split(",")
-    .map((o) => o.trim())
-    .filter(Boolean),
-);
-
-app.use(
-  cors({
-    origin(origin, callback) {
-      // No Origin header = same-origin navigation / curl / health checks.
-      if (!origin) return callback(null, true);
-      if (allowedOrigins.has(origin)) return callback(null, true);
-      // Otherwise only allow the exact host the request was sent to.
-      try {
-        return callback(null, new URL(origin).host === req.get("host"));
-      } catch (_) {
-        return callback(null, false);
-      }
-    },
-    credentials: true, // allow the auth cookie to be sent
-  }),
-);
+// Same-origin app: CORS is not needed for browser requests from this site. We
+// keep all API calls same-origin by default, which prevents a malicious site
+// from attaching the auth cookie in a cross-site request.
 
 // The product page is for signed-in users only. Everything else in /public
 // (the sign-in page, CSS, JS, images) stays public on purpose. This must be
@@ -118,6 +104,10 @@ app.use(
 // cosmetics.html (with its .html extension) without ever reaching the guard.
 app.get(["/cosmetics", "/cosmetics.html"], requireAuthPage, (req, res) => {
   res.sendFile(path.join(__dirname, "public", "cosmetics.html"));
+});
+
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "signup.html"));
 });
 
 // ---- Static frontend (signup.html, signup.css, Event.js, images) ----
